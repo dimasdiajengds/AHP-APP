@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2025 at 04:30 PM
+-- Generation Time: May 29, 2025 at 05:09 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -69,19 +69,20 @@ INSERT INTO `alternatif` (`id_layanan`, `nama_layanan`) VALUES
 
 CREATE TABLE `kriteria` (
   `kd_kriteria` char(3) NOT NULL,
-  `nama_kriteria` varchar(30) NOT NULL
+  `nama_kriteria` varchar(30) NOT NULL,
+  `nilai_prioritas` decimal(4,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kriteria`
 --
 
-INSERT INTO `kriteria` (`kd_kriteria`, `nama_kriteria`) VALUES
-('K1', 'Biaya layanan'),
-('K2', 'Popularitas pengguna'),
-('K3', 'Kemudahan sistem'),
-('K4', 'Fitur promosi'),
-('K5', 'Kemudahan transaksi');
+INSERT INTO `kriteria` (`kd_kriteria`, `nama_kriteria`, `nilai_prioritas`) VALUES
+('K1', 'Biaya layanan', '0.000'),
+('K2', 'Popularitas pengguna', '0.000'),
+('K3', 'Kemudahan sistem', '0.000'),
+('K4', 'Fitur promosi', '0.000'),
+('K5', 'Kemudahan transaksi', '0.000');
 
 -- --------------------------------------------------------
 
