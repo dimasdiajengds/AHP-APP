@@ -75,32 +75,31 @@ public class Seleksi extends javax.swing.JPanel {
         tombolHapus = new javax.swing.JButton();
         tombolLihatPerhitunganAHP = new javax.swing.JButton();
 
-        judul.setBackground(new java.awt.Color(22, 65, 53));
+        judul.setBackground(new java.awt.Color(86, 169, 222));
         judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        judul.setForeground(new java.awt.Color(255, 237, 192));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Seleksi  Small.png"))); // NOI18N
+        judul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/seleksiiii.png"))); // NOI18N
         judul.setText("  Ranking Hasil Seleksi Paket Makanan");
         judul.setOpaque(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 237, 192));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         tabelRanking.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tabelRanking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Ranking", "ID Paket", "Nama Paket", "Jumlah Orang", "Hasil Penilaian"
+                "ID Layanan", "Nama Layanan", "Hasil Penilaian"
             }
         ));
         tabelRanking.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,9 +109,8 @@ public class Seleksi extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelRanking);
 
-        tombolUpdate.setBackground(new java.awt.Color(22, 65, 53));
+        tombolUpdate.setBackground(new java.awt.Color(86, 169, 222));
         tombolUpdate.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolUpdate.setForeground(new java.awt.Color(255, 255, 255));
         tombolUpdate.setText("Update");
         tombolUpdate.setBorder(null);
         tombolUpdate.setPreferredSize(new java.awt.Dimension(71, 35));
@@ -122,7 +120,7 @@ public class Seleksi extends javax.swing.JPanel {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(255, 237, 192));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("- Klik tombol Update untuk mengupdate data tabel");
 
@@ -160,9 +158,8 @@ public class Seleksi extends javax.swing.JPanel {
                 .addGap(0, 30, Short.MAX_VALUE))
         );
 
-        tombolHapus.setBackground(new java.awt.Color(22, 65, 53));
+        tombolHapus.setBackground(new java.awt.Color(86, 169, 222));
         tombolHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolHapus.setForeground(new java.awt.Color(255, 255, 255));
         tombolHapus.setText("Hapus");
         tombolHapus.setBorder(null);
         tombolHapus.setPreferredSize(new java.awt.Dimension(35, 35));
@@ -172,9 +169,8 @@ public class Seleksi extends javax.swing.JPanel {
             }
         });
 
-        tombolLihatPerhitunganAHP.setBackground(new java.awt.Color(22, 65, 53));
+        tombolLihatPerhitunganAHP.setBackground(new java.awt.Color(86, 169, 222));
         tombolLihatPerhitunganAHP.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolLihatPerhitunganAHP.setForeground(new java.awt.Color(255, 255, 255));
         tombolLihatPerhitunganAHP.setText("Hitung");
         tombolLihatPerhitunganAHP.setBorder(null);
         tombolLihatPerhitunganAHP.setPreferredSize(new java.awt.Dimension(37, 35));
