@@ -41,18 +41,18 @@ public class MenuUtama extends javax.swing.JFrame {
     // untuk sliderMenu
     private void sliderMenuDefault(){
         slideMenuLaporan.setVisible(false);
-        slideMenuPengaturan.setVisible(false);
+//        slideMenuPengaturan.setVisible(false);
     }
     
     private void hiddenSubMenu(){
         if(slideMenuLaporan.isVisible() == true){
             slideMenuLaporan.setVisible(false);
-            slideMenuPengaturan.setVisible(false);
+//            slideMenuPengaturan.setVisible(false);
         }
-        if(slideMenuPengaturan.isVisible() == true){
-            slideMenuLaporan.setVisible(false);
-            slideMenuPengaturan.setVisible(false);
-        }
+//        if(slideMenuPengaturan.isVisible() == true){
+//            slideMenuLaporan.setVisible(false);
+////            slideMenuPengaturan.setVisible(false);
+//        }
     }
     
     private void showSubMenu(JPanel subMenu){
@@ -594,7 +594,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void kriteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kriteriaMouseClicked
         // TODO add your handling code here:
-        showSubMenu(slideMenuPengaturan);
+//        showSubMenu(slideMenuPengaturan);
     }//GEN-LAST:event_kriteriaMouseClicked
 
     private void dataPaketMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataPaketMouseExited
