@@ -136,7 +136,7 @@ public class DataPaket extends javax.swing.JPanel {
         judul.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         judul.setForeground(new java.awt.Color(255, 237, 192));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setText("  Data Paket Makanan");
+        judul.setText("  Data Paket Makanan dan Minuman");
         judul.setOpaque(true);
 
         Panel.setBackground(new java.awt.Color(255, 237, 192));

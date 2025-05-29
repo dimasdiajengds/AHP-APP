@@ -61,7 +61,7 @@
           <Color blue="c0" green="ed" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="  Data Paket Makanan"/>
+        <Property name="text" type="java.lang.String" value="  Data Paket Makanan dan Minuman"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>

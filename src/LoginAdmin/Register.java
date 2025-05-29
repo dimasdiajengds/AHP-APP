@@ -73,14 +73,15 @@ public class Register extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(22, 65, 53));
+        jPanel2.setBackground(new java.awt.Color(86, 169, 222));
 
-        jPanel1.setBackground(new java.awt.Color(255, 237, 192));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        bRegis.setBackground(new java.awt.Color(22, 65, 53));
+        bRegis.setBackground(new java.awt.Color(86, 169, 222));
         bRegis.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        bRegis.setForeground(new java.awt.Color(255, 237, 192));
+        bRegis.setForeground(new java.awt.Color(86, 169, 222));
         bRegis.setText("REGISTER");
+        bRegis.setBorder(null);
         bRegis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRegisActionPerformed(evt);
@@ -95,14 +96,12 @@ public class Register extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(22, 65, 53));
         jLabel1.setText("Username");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(22, 65, 53));
         jLabel2.setText("Password");
 
-        bBack.setBackground(new java.awt.Color(22, 65, 53));
+        bBack.setBackground(new java.awt.Color(86, 169, 222));
         bBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Batal Small.png"))); // NOI18N
         bBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,17 +110,14 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(22, 65, 53));
         jLabel5.setText("Register");
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(22, 65, 53));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Silahkan rigister agar dapat menggunakan aplikasi");
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(22, 65, 53));
         jLabel10.setText("Email");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -177,7 +173,7 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(bBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,16 +182,16 @@ public class Register extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 18, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addGap(0, 328, Short.MAX_VALUE)))
+                    .addGap(0, 346, Short.MAX_VALUE)))
         );
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 237, 192));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Aplikasi Sistem Pendukung Keputusan");
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 237, 192));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Pemilihan Paket Makanan");
 
@@ -213,7 +209,7 @@ public class Register extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(36, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(34, 34, 34)))
@@ -230,9 +226,7 @@ public class Register extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addGap(21, 21, 21))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -245,9 +239,7 @@ public class Register extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(762, 430));
