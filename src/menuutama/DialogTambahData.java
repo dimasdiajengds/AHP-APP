@@ -35,56 +35,23 @@ public class DialogTambahData extends javax.swing.JDialog {
     }
     
     
-    public void setDataTabel(String id_paket, String nama_paket, String jenis_menu, String tingkat_vegetarian, String jumlah_orang, String menu_paket, String harga_paket, String jumlah_menu, String tingkat_popularitas){
-        tNoId.setText(id_paket);
-        tNamaPaket.setText(nama_paket);
-        if(jenis_menu.equals("Indian Food")){
-            rbWesternFood.setSelected(true);
-            rbIndianFood.setSelected(false);
-        }else if(jenis_menu.equals("Western Food")){
-            rbWesternFood.setSelected(false);
-            rbIndianFood.setSelected(true);
-        }
-        cbTingkatVegetarian.setSelectedItem(tingkat_vegetarian);
-        tJumlahOrang.setText(jumlah_orang);
-        tMenuPaket.setText(menu_paket);
-        tHargaPaket.setText(harga_paket);
-        cbJumlahMenu.setSelectedItem(jumlah_menu);
-        cbTingkatPopularitas.setSelectedItem(tingkat_popularitas);
+    public void setDataTabel(String id_layanan, String nama_layanan){
+        tNoId.setText(id_layanan);
+        tNamaPaket.setText(nama_layanan);
     }
     
     protected void kosong(){
         tNoId.setText("");
         tNamaPaket.setText("");
-        btnG.clearSelection();
-        cbTingkatVegetarian.setSelectedIndex(0);
-        tMenuPaket.setText("");
-        tJumlahOrang.setText("");
-        tHargaPaket.setText("");
-        cbJumlahMenu.setSelectedIndex(0);
-        cbTingkatPopularitas.setSelectedIndex(0);
     }
     
     private void insertDataPaket(){        
-        String sql = "INSERT INTO data_paket VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO layanan VALUES (?,?,?,?,?,?,?,?,?)";
             try{
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.setString(1, tNoId.getText());
                 stat.setString(2, tNamaPaket.getText());
-
-                String jenis_menu = "";
-                if(rbWesternFood.isSelected()){
-                    jenis_menu="Western Food";
-                }else if(rbIndianFood.isSelected()){
-                    jenis_menu="Indian Food";
-                }
-                stat.setString(3, jenis_menu);
-                stat.setString(4, cbTingkatVegetarian.getSelectedItem().toString());
-                stat.setString(5, tJumlahOrang.getText());
-                stat.setString(6, tMenuPaket.getText());
-                stat.setString(7, tHargaPaket.getText());
-                stat.setString(8, cbJumlahMenu.getSelectedItem().toString());
-                stat.setString(9, cbTingkatPopularitas.getSelectedItem().toString());
+                
                 stat.executeUpdate();
                 JOptionPane.showMessageDialog(null, "DATA Berhasil Disimpan");
                 kosong();
@@ -96,22 +63,9 @@ public class DialogTambahData extends javax.swing.JDialog {
     
     private void editDataPaket(){
         try{
-            String sql = "UPDATE data_paket set nama_paket=?, jenis_menu=?, tingkat_vegetarian=?, jumlah_orang=?, menu_paket=?, harga_paket=?, jumlah_menu=?, tingkat_popularitas=?  WHERE id_paket=?";
+            String sql = "UPDATE layanan set nama_layanan=? WHERE id_layanan=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, tNamaPaket.getText());
-            String jenis_menu = "";
-                if(rbWesternFood.isSelected()){
-                    jenis_menu="Western Food";
-                }else if(rbIndianFood.isSelected()){
-                    jenis_menu="Indian Food";
-                }
-            stat.setString(2, jenis_menu);
-            stat.setString(3, cbTingkatVegetarian.getSelectedItem().toString());
-            stat.setString(4, tJumlahOrang.getText());
-            stat.setString(5, tMenuPaket.getText());
-            stat.setString(6, tHargaPaket.getText());
-            stat.setString(7, cbJumlahMenu.getSelectedItem().toString());
-            stat.setString(8, cbTingkatPopularitas.getSelectedItem().toString());
             stat.setString(9, tNoId.getText());
 
             stat.executeUpdate();

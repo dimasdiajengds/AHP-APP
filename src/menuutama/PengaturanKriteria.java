@@ -27,10 +27,10 @@ public class PengaturanKriteria extends javax.swing.JPanel {
     }
     
     protected void kosong(){
-        cbKriteria1.setSelectedIndex(0);
-        cbKriteria2.setSelectedIndex(0);
-        cbKriteria3.setSelectedIndex(0);
-        cbKriteria4.setSelectedIndex(0);
+//        cbKriteria1.setSelectedIndex(0);
+//        cbKriteria2.setSelectedIndex(0);
+//        cbKriteria3.setSelectedIndex(0);
+//        cbKriteria4.setSelectedIndex(0);
     }
     
     protected void updateDataTabel(){
@@ -61,60 +61,60 @@ public class PengaturanKriteria extends javax.swing.JPanel {
     protected void getDataTabel(){
         String sql = "SELECT nama_kriteria FROM kriteria ORDER BY kd_kriteria";
         int n = 1;
-        try{
-            java.sql.Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while(hasil.next()){
-                String a = hasil.getString("nama_kriteria");
-                if(n==1){
-                    cbKriteria1.setSelectedItem(a);
-                }else if(n==2){
-                    cbKriteria2.setSelectedItem(a);
-                }else if(n==3){
-                    cbKriteria3.setSelectedItem(a);
-                }else{
-                    cbKriteria4.setSelectedItem(a);
-                }   
-                n++;
-            }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e);
-        }
+//        try{
+//            java.sql.Statement stat = conn.createStatement();
+//            ResultSet hasil = stat.executeQuery(sql);
+//            while(hasil.next()){
+//                String a = hasil.getString("nama_kriteria");
+//                if(n==1){
+//                    cbKriteria1.setSelectedItem(a);
+//                }else if(n==2){
+//                    cbKriteria2.setSelectedItem(a);
+//                }else if(n==3){
+//                    cbKriteria3.setSelectedItem(a);
+//                }else{
+//                    cbKriteria4.setSelectedItem(a);
+//                }   
+//                n++;
+//            }
+//        }catch(SQLException e){
+//            JOptionPane.showMessageDialog(null,e);
+//        }
     }
     
     protected void insertDataKriteria(){
-        try{
-            int n=1;
-            do{
-                String kepentingan, kodeKriteria;
-                String sql = "INSERT INTO kriteria VALUES (?,?,?)";
-                PreparedStatement stat = conn.prepareStatement(sql);
-                kodeKriteria = "K"+n;
-                stat.setString(1, kodeKriteria);
-                if(n == 1){
-                    stat.setString(2, cbKriteria1.getSelectedItem().toString());
-                    kepentingan="Sangat Penting ke-1";
-                }else if(n == 2){
-                    stat.setString(2, cbKriteria2.getSelectedItem().toString());
-                    kepentingan="Penting ke-2";
-                }else if(n == 3){
-                    stat.setString(2, cbKriteria3.getSelectedItem().toString());
-                    kepentingan="Cukup Penting ke-3";
-                }else{
-                    stat.setString(2, cbKriteria4.getSelectedItem().toString());
-                    kepentingan="Biasa ke-4";
-                }
-                stat.setString(3, kepentingan);
-                stat.executeUpdate();
-                
-                n++;
-            }while(n<=4);
-            JOptionPane.showMessageDialog(null, "DATA Berhasil Disimpan");
-            kosong();
-            updateDataTabel();
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan "+e);
-        }
+//        try{
+//            int n=1;
+//            do{
+//                String kepentingan, kodeKriteria;
+//                String sql = "INSERT INTO kriteria VALUES (?,?,?)";
+//                PreparedStatement stat = conn.prepareStatement(sql);
+//                kodeKriteria = "K"+n;
+//                stat.setString(1, kodeKriteria);
+//                if(n == 1){
+//                    stat.setString(2, cbKriteria1.getSelectedItem().toString());
+//                    kepentingan="Sangat Penting ke-1";
+//                }else if(n == 2){
+//                    stat.setString(2, cbKriteria2.getSelectedItem().toString());
+//                    kepentingan="Penting ke-2";
+//                }else if(n == 3){
+//                    stat.setString(2, cbKriteria3.getSelectedItem().toString());
+//                    kepentingan="Cukup Penting ke-3";
+//                }else{
+//                    stat.setString(2, cbKriteria4.getSelectedItem().toString());
+//                    kepentingan="Biasa ke-4";
+//                }
+//                stat.setString(3, kepentingan);
+//                stat.executeUpdate();
+//                
+//                n++;
+//            }while(n<=4);
+//            JOptionPane.showMessageDialog(null, "DATA Berhasil Disimpan");
+//            kosong();
+//            updateDataTabel();
+//        }catch(SQLException e){
+//            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan "+e);
+//        }
     }
     
     protected void hapusDataKriteria(){
@@ -135,38 +135,38 @@ public class PengaturanKriteria extends javax.swing.JPanel {
     }
     
     protected void editDataKriteria(){
-        try{
-            int n=1;
-            do{
-                String kepentingan, kodeKriteria;
-                String sql = "UPDATE kriteria set nama_kriteria=?, prioritas_kepentingan=? WHERE kd_kriteria=?";
-                PreparedStatement stat = conn.prepareStatement(sql);
-                
-                if(n == 1){
-                    stat.setString(1, cbKriteria1.getSelectedItem().toString());
-                    kepentingan="Sangat Penting ke-1";
-                }else if(n == 2){
-                    stat.setString(1, cbKriteria2.getSelectedItem().toString());
-                    kepentingan="Penting ke-2";
-                }else if(n == 3){
-                    stat.setString(1, cbKriteria3.getSelectedItem().toString());
-                    kepentingan="Cukup Penting ke-3";
-                }else{
-                    stat.setString(1, cbKriteria4.getSelectedItem().toString());
-                    kepentingan="Biasa ke-4";
-                }
-                stat.setString(2, kepentingan);
-                kodeKriteria = "K"+n;
-                stat.setString(3, kodeKriteria);
-                stat.executeUpdate();
-                n++;
-            }while(n<=4);
-            JOptionPane.showMessageDialog(null, "DATA Berhasil DiUbah");
-            kosong();
-            updateDataTabel();
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Data Gagal DiUbah "+e);
-        }
+//        try{
+//            int n=1;
+//            do{
+//                String kepentingan, kodeKriteria;
+//                String sql = "UPDATE kriteria set nama_kriteria=?, prioritas_kepentingan=? WHERE kd_kriteria=?";
+//                PreparedStatement stat = conn.prepareStatement(sql);
+//                
+//                if(n == 1){
+//                    stat.setString(1, cbKriteria1.getSelectedItem().toString());
+//                    kepentingan="Sangat Penting ke-1";
+//                }else if(n == 2){
+//                    stat.setString(1, cbKriteria2.getSelectedItem().toString());
+//                    kepentingan="Penting ke-2";
+//                }else if(n == 3){
+//                    stat.setString(1, cbKriteria3.getSelectedItem().toString());
+//                    kepentingan="Cukup Penting ke-3";
+//                }else{
+//                    stat.setString(1, cbKriteria4.getSelectedItem().toString());
+//                    kepentingan="Biasa ke-4";
+//                }
+//                stat.setString(2, kepentingan);
+//                kodeKriteria = "K"+n;
+//                stat.setString(3, kodeKriteria);
+//                stat.executeUpdate();
+//                n++;
+//            }while(n<=4);
+//            JOptionPane.showMessageDialog(null, "DATA Berhasil DiUbah");
+//            kosong();
+//            updateDataTabel();
+//        }catch(SQLException e){
+//            JOptionPane.showMessageDialog(null, "Data Gagal DiUbah "+e);
+//        }
     }
     
     /**
@@ -183,37 +183,25 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         tombolSimpan = new javax.swing.JButton();
         tombolEdit = new javax.swing.JButton();
         tombolHapus = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        cbKriteria1 = new javax.swing.JComboBox<>();
-        cbKriteria2 = new javax.swing.JComboBox<>();
-        cbKriteria3 = new javax.swing.JComboBox<>();
-        cbKriteria4 = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
-        cbKriteria5 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelKriteria = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 237, 192));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        judul.setBackground(new java.awt.Color(22, 65, 53));
+        judul.setBackground(new java.awt.Color(86, 169, 222));
         judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        judul.setForeground(new java.awt.Color(255, 237, 192));
+        judul.setForeground(new java.awt.Color(255, 255, 255));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Kriteria Small.png"))); // NOI18N
+        judul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kriteriaaaa.png"))); // NOI18N
         judul.setText("  Pengaturan Bobot Kepentingan Kriteria");
         judul.setOpaque(true);
 
-        jPanel2.setBackground(new java.awt.Color(255, 237, 192));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tombolSimpan.setBackground(new java.awt.Color(22, 65, 53));
+        tombolSimpan.setBackground(new java.awt.Color(86, 169, 222));
         tombolSimpan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolSimpan.setForeground(new java.awt.Color(255, 237, 192));
-        tombolSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Simpan Small.png"))); // NOI18N
+        tombolSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Simpannnnnnn.png"))); // NOI18N
         tombolSimpan.setText("SIMPAN");
         tombolSimpan.setBorder(null);
         tombolSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -222,10 +210,9 @@ public class PengaturanKriteria extends javax.swing.JPanel {
             }
         });
 
-        tombolEdit.setBackground(new java.awt.Color(22, 65, 53));
+        tombolEdit.setBackground(new java.awt.Color(86, 169, 222));
         tombolEdit.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolEdit.setForeground(new java.awt.Color(255, 237, 192));
-        tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Ubah Small.png"))); // NOI18N
+        tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Ubahhhhh.png"))); // NOI18N
         tombolEdit.setText("UBAH");
         tombolEdit.setBorder(null);
         tombolEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -234,10 +221,9 @@ public class PengaturanKriteria extends javax.swing.JPanel {
             }
         });
 
-        tombolHapus.setBackground(new java.awt.Color(22, 65, 53));
+        tombolHapus.setBackground(new java.awt.Color(86, 169, 222));
         tombolHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolHapus.setForeground(new java.awt.Color(255, 237, 192));
-        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Hapus Small.png"))); // NOI18N
+        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hapusss.png"))); // NOI18N
         tombolHapus.setText("HAPUS");
         tombolHapus.setBorder(null);
         tombolHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -245,106 +231,6 @@ public class PengaturanKriteria extends javax.swing.JPanel {
                 tombolHapusActionPerformed(evt);
             }
         });
-
-        jPanel11.setBackground(new java.awt.Color(22, 65, 53));
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Prioritas Kepentingan dari Kriteria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 1, 12), new java.awt.Color(255, 237, 192))); // NOI18N
-
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 237, 192));
-        jLabel8.setText("Kriteria Sangat Penting ke-1");
-
-        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 237, 192));
-        jLabel11.setText("Kriteria penting ke-2");
-
-        jLabel12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 237, 192));
-        jLabel12.setText("Kriteria cukup penting ke-3");
-
-        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 237, 192));
-        jLabel13.setText("Kriteria biasa ke-4");
-
-        cbKriteria1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        cbKriteria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Kriteria -", "Tingkat Vegetarian", "Harga Paket", "Jumlah Menu", "Tingkat Popularitas" }));
-
-        cbKriteria2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        cbKriteria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Kriteria -", "Tingkat Vegetarian", "Harga Paket", "Jumlah Menu", "Tingkat Popularitas" }));
-
-        cbKriteria3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        cbKriteria3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Kriteria -", "Tingkat Vegetarian", "Harga Paket", "Jumlah Menu", "Tingkat Popularitas" }));
-        cbKriteria3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbKriteria3ActionPerformed(evt);
-            }
-        });
-
-        cbKriteria4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        cbKriteria4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Kriteria -", "Tingkat Vegetarian", "Harga Paket", "Jumlah Menu", "Tingkat Popularitas" }));
-        cbKriteria4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbKriteria4ActionPerformed(evt);
-            }
-        });
-
-        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 237, 192));
-        jLabel14.setText("Kriteria tidak penting ke-5");
-
-        cbKriteria5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        cbKriteria5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Kriteria -", "Tingkat Vegetarian", "Harga Paket", "Jumlah Menu", "Tingkat Popularitas" }));
-        cbKriteria5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbKriteria5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel14))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cbKriteria4, javax.swing.GroupLayout.Alignment.LEADING, 0, 317, Short.MAX_VALUE)
-                    .addComponent(cbKriteria3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbKriteria2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbKriteria1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbKriteria5, javax.swing.GroupLayout.Alignment.LEADING, 0, 317, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cbKriteria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbKriteria2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbKriteria3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbKriteria4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(cbKriteria5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
 
         tabelKriteria.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tabelKriteria.setModel(new javax.swing.table.DefaultTableModel(
@@ -358,7 +244,7 @@ public class PengaturanKriteria extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Kode Kriteria", "Nama Kriteria", "Prioritas Kepentingan"
+                "Kode Kriteria", "Nama Kriteria", "Nilai Prioritas"
             }
         ));
         tabelKriteria.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -379,22 +265,17 @@ public class PengaturanKriteria extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(tombolSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180)
                         .addComponent(jLabel1)
-                        .addContainerGap(138, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,14 +285,11 @@ public class PengaturanKriteria extends javax.swing.JPanel {
                     .addComponent(tombolSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(229, 229, 229)
-                        .addComponent(jLabel1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(315, 315, 315)
+                .addComponent(jLabel1)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -432,12 +310,12 @@ public class PengaturanKriteria extends javax.swing.JPanel {
 
     private void tombolSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolSimpanActionPerformed
         // TODO add your handling code here:
-        if(cbKriteria1.getSelectedIndex() != 0 && cbKriteria2.getSelectedIndex() != 0 
-                && cbKriteria3.getSelectedIndex() != 0 && cbKriteria4.getSelectedIndex() != 0){    
-            insertDataKriteria();
-        }else{
-            JOptionPane.showMessageDialog(null, "Mohon isi semua kriteria yang ada!", "Error", ERROR_MESSAGE );
-        }
+//        if(cbKriteria1.getSelectedIndex() != 0 && cbKriteria2.getSelectedIndex() != 0 
+//                && cbKriteria3.getSelectedIndex() != 0 && cbKriteria4.getSelectedIndex() != 0){    
+//            insertDataKriteria();
+//        }else{
+//            JOptionPane.showMessageDialog(null, "Mohon isi semua kriteria yang ada!", "Error", ERROR_MESSAGE );
+//        }
     }//GEN-LAST:event_tombolSimpanActionPerformed
 
     private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
@@ -455,32 +333,9 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         getDataTabel();
     }//GEN-LAST:event_tabelKriteriaMouseClicked
 
-    private void cbKriteria4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKriteria4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbKriteria4ActionPerformed
-
-    private void cbKriteria3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKriteria3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbKriteria3ActionPerformed
-
-    private void cbKriteria5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKriteria5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbKriteria5ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbKriteria1;
-    private javax.swing.JComboBox<String> cbKriteria2;
-    private javax.swing.JComboBox<String> cbKriteria3;
-    private javax.swing.JComboBox<String> cbKriteria4;
-    private javax.swing.JComboBox<String> cbKriteria5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;

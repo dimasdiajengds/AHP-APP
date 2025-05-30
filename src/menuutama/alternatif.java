@@ -1,10 +1,12 @@
 
 package menuutama;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
@@ -13,7 +15,7 @@ import koneksi.Koneksi;
  *
  * @author Neubri
  */
-public class DataPaket extends javax.swing.JPanel {
+public final class alternatif extends javax.swing.JPanel {
     //koneksi mysql 
     private Connection conn = new Koneksi().connect();
     private DialogTambahData dialog = new DialogTambahData(null, true);
@@ -23,7 +25,7 @@ public class DataPaket extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-    public DataPaket() {
+    public alternatif() {
         initComponents();
         updateDataTabel();
     }
@@ -32,43 +34,34 @@ public class DataPaket extends javax.swing.JPanel {
      * mendapatkan Data Tabel dari database
      */
     protected void updateDataTabel(){
-        Object[] Baris = {
-            "Id Paket",
-            "Nama Paket",
-            "Jenis Menu",
-            "Tingkat Vegetarian",
-            "Jumlah Orang",
-            "Menu Paket",
-            "Harga Paket",
-            "Jumlah Menu",
-            "Tingkat Popularitas"
-        };
-        
-        tabmode = new DefaultTableModel(null, Baris);
-        tabelDataPaket.setModel(tabmode);
+      if (tabelDataPaket == null) {
+        JOptionPane.showMessageDialog(null, "tabelDataPaket belum diinisialisasi!");
+        return;
+    }
 
-        String sql = "SELECT * FROM data_paket ORDER BY id_paket";
-        
-        try{
-            java.sql.Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while(hasil.next()){
-                String a = hasil.getString("id_paket");
-                String b = hasil.getString("nama_paket");
-                String c = hasil.getString("jenis_menu");
-                String d = hasil.getString("tingkat_vegetarian");
-                String e = hasil.getString("jumlah_orang");
-                String f = hasil.getString("menu_paket");
-                String g = hasil.getString("harga_paket");
-                String h = hasil.getString("jumlah_menu");
-                String i = hasil.getString("tingkat_popularitas");
-                
-                String[] data={a, b, c, d, e, f, g, h, i};
-                tabmode.addRow(data);
-            }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e);
+    Object[] Baris = {
+        "Id Layanan",
+        "Nama Layanan",
+    };
+
+    tabmode = new DefaultTableModel(null, Baris);
+    tabelDataPaket.setModel(tabmode);
+
+    String sql = "SELECT * FROM alternatif ORDER BY id_layanan";
+
+    try {
+        java.sql.Statement stat = conn.createStatement();
+        ResultSet hasil = stat.executeQuery(sql);
+        while (hasil.next()) {
+            String a = hasil.getString("id_layanan");
+            String b = hasil.getString("nama_layanan");
+
+            String[] data = { a, b };
+            tabmode.addRow(data);
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
     }
     
     /**
@@ -78,23 +71,16 @@ public class DataPaket extends javax.swing.JPanel {
         int bar = tabelDataPaket.getSelectedRow();
         String a = tabmode.getValueAt(bar, 0).toString();
         String b = tabmode.getValueAt(bar, 1).toString();
-        String c = tabmode.getValueAt(bar, 2).toString();
-        String d = tabmode.getValueAt(bar, 3).toString();
-        String e = tabmode.getValueAt(bar, 4).toString();
-        String f = tabmode.getValueAt(bar, 5).toString();
-        String g = tabmode.getValueAt(bar, 6).toString();
-        String h = tabmode.getValueAt(bar, 7).toString();
-        String i = tabmode.getValueAt(bar, 8).toString();
         
         noId = a;
-        dialog.setDataTabel(a, b, c, d, e, f, g, h, i);
+        dialog.setDataTabel(a, b);
     }
     
     protected void hapusDataPaket(){
         if(noId != null){
             int ok = JOptionPane.showConfirmDialog(null,"hapus","Konfirmasi Dialog",JOptionPane.YES_NO_OPTION);
             if(ok == 0){
-                String sql = "DELETE FROM data_paket WHERE id_paket='"+noId+"'";
+                String sql = "DELETE FROM layanan WHERE id_paket='"+noId+"'";
                 try{
                     PreparedStatement stat = conn.prepareStatement(sql);
                     stat.executeUpdate();
@@ -130,33 +116,33 @@ public class DataPaket extends javax.swing.JPanel {
         catatan2 = new javax.swing.JLabel();
         catatan1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 237, 192));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        judul.setBackground(new java.awt.Color(22, 65, 53));
+        judul.setBackground(new java.awt.Color(86, 169, 222));
         judul.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        judul.setForeground(new java.awt.Color(255, 237, 192));
+        judul.setForeground(new java.awt.Color(255, 255, 255));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setText("  Data Paket Makanan");
+        judul.setText("  Data Platform Digital Makanan dan Minuman Online");
         judul.setOpaque(true);
 
-        Panel.setBackground(new java.awt.Color(255, 237, 192));
+        Panel.setBackground(new java.awt.Color(255, 255, 255));
 
         tabelDataPaket.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tabelDataPaket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID Paket", "Nama Paket", "Jenis Menu", "Tingkat Prioritas", "Jumlah Orang", "Menu Paket", "Harga Paket", "Jumlah Menu", "Tingkat Vegetarian"
+                "ID Layanan", "Nama Layanan"
             }
         ));
         tabelDataPaket.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,10 +152,9 @@ public class DataPaket extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelDataPaket);
 
-        tombolTambah.setBackground(new java.awt.Color(22, 65, 53));
+        tombolTambah.setBackground(new java.awt.Color(86, 169, 222));
         tombolTambah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolTambah.setForeground(new java.awt.Color(255, 237, 192));
-        tombolTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Tambah Small.png"))); // NOI18N
+        tombolTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adddd.png"))); // NOI18N
         tombolTambah.setText("TAMBAH");
         tombolTambah.setBorder(null);
         tombolTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -178,10 +163,9 @@ public class DataPaket extends javax.swing.JPanel {
             }
         });
 
-        tombolEdit.setBackground(new java.awt.Color(22, 65, 53));
+        tombolEdit.setBackground(new java.awt.Color(86, 169, 222));
         tombolEdit.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolEdit.setForeground(new java.awt.Color(255, 237, 192));
-        tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Ubah Small.png"))); // NOI18N
+        tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Ubahhhhh.png"))); // NOI18N
         tombolEdit.setText("UBAH");
         tombolEdit.setBorder(null);
         tombolEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -190,10 +174,9 @@ public class DataPaket extends javax.swing.JPanel {
             }
         });
 
-        tombolHapus.setBackground(new java.awt.Color(22, 65, 53));
+        tombolHapus.setBackground(new java.awt.Color(86, 169, 222));
         tombolHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolHapus.setForeground(new java.awt.Color(255, 237, 192));
-        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Hapus Small.png"))); // NOI18N
+        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hapusss.png"))); // NOI18N
         tombolHapus.setText("HAPUS");
         tombolHapus.setBorder(null);
         tombolHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +186,7 @@ public class DataPaket extends javax.swing.JPanel {
         });
 
         catatan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        catatan.setText("Catatan : Edit/Hapus data paket makanan, klik data pada tabel terlebih dahulu");
+        catatan.setText("Catatan : Edit/Hapus data layanan, klik data pada tabel terlebih dahulu");
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
@@ -235,7 +218,7 @@ public class DataPaket extends javax.swing.JPanel {
                     .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(414, Short.MAX_VALUE))
             .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelLayout.createSequentialGroup()
                     .addGap(61, 61, 61)
@@ -246,10 +229,8 @@ public class DataPaket extends javax.swing.JPanel {
         );
 
         catatan2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        catatan2.setText("Jika harga paket 6 - 9 Juta cukup input 2 angka awal harga paket");
 
         catatan1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        catatan1.setText("Jika harga paket diatas 10 Juta (puluhan) cukup input 3 angka awal harga paket");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
