@@ -239,7 +239,7 @@ public class Seleksi extends javax.swing.JPanel {
 
     private void tombolLihatPerhitunganAHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolLihatPerhitunganAHPActionPerformed
         // TODO add your handling code here:
-        DialogPerhitunganAHP dialog1 = new DialogPerhitunganAHP(null, true);
+        PerhitunganAHP dialog1 = new PerhitunganAHP(null, true);
         dialog1.show();
     }//GEN-LAST:event_tombolLihatPerhitunganAHPActionPerformed
 
