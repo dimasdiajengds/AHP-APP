@@ -16,21 +16,15 @@ import koneksi.Koneksi;
 public class PengaturanKriteria extends javax.swing.JPanel {
     private Connection conn = new Koneksi().connect();
     private DefaultTableModel tabmode;
+    private String noId;
+    private addDialogKriteria adddialog = new addDialogKriteria(null, true);
+    private updateDialogKriteria updatedialog = new updateDialogKriteria(null, true);
+
     
-    /**
-     * Creates new form Pengaturan
-     */
     public PengaturanKriteria() {
         initComponents();
         updateDataTabel();
 
-    }
-    
-    protected void kosong(){
-//        cbKriteria1.setSelectedIndex(0);
-//        cbKriteria2.setSelectedIndex(0);
-//        cbKriteria3.setSelectedIndex(0);
-//        cbKriteria4.setSelectedIndex(0);
     }
     
     protected void updateDataTabel(){
@@ -48,7 +42,7 @@ public class PengaturanKriteria extends javax.swing.JPanel {
             while(hasil.next()){
                 String a = hasil.getString("kd_kriteria");
                 String b = hasil.getString("nama_kriteria");
-                String c = hasil.getString("prioritas_kepentingan");
+                String c = hasil.getString("nilai_prioritas");
                 
                 String[] data={a, b, c};
                 tabmode.addRow(data);
@@ -59,115 +53,36 @@ public class PengaturanKriteria extends javax.swing.JPanel {
     }
     
     protected void getDataTabel(){
-        String sql = "SELECT nama_kriteria FROM kriteria ORDER BY kd_kriteria";
-        int n = 1;
-//        try{
-//            java.sql.Statement stat = conn.createStatement();
-//            ResultSet hasil = stat.executeQuery(sql);
-//            while(hasil.next()){
-//                String a = hasil.getString("nama_kriteria");
-//                if(n==1){
-//                    cbKriteria1.setSelectedItem(a);
-//                }else if(n==2){
-//                    cbKriteria2.setSelectedItem(a);
-//                }else if(n==3){
-//                    cbKriteria3.setSelectedItem(a);
-//                }else{
-//                    cbKriteria4.setSelectedItem(a);
-//                }   
-//                n++;
-//            }
-//        }catch(SQLException e){
-//            JOptionPane.showMessageDialog(null,e);
-//        }
-    }
-    
-    protected void insertDataKriteria(){
-//        try{
-//            int n=1;
-//            do{
-//                String kepentingan, kodeKriteria;
-//                String sql = "INSERT INTO kriteria VALUES (?,?,?)";
-//                PreparedStatement stat = conn.prepareStatement(sql);
-//                kodeKriteria = "K"+n;
-//                stat.setString(1, kodeKriteria);
-//                if(n == 1){
-//                    stat.setString(2, cbKriteria1.getSelectedItem().toString());
-//                    kepentingan="Sangat Penting ke-1";
-//                }else if(n == 2){
-//                    stat.setString(2, cbKriteria2.getSelectedItem().toString());
-//                    kepentingan="Penting ke-2";
-//                }else if(n == 3){
-//                    stat.setString(2, cbKriteria3.getSelectedItem().toString());
-//                    kepentingan="Cukup Penting ke-3";
-//                }else{
-//                    stat.setString(2, cbKriteria4.getSelectedItem().toString());
-//                    kepentingan="Biasa ke-4";
-//                }
-//                stat.setString(3, kepentingan);
-//                stat.executeUpdate();
-//                
-//                n++;
-//            }while(n<=4);
-//            JOptionPane.showMessageDialog(null, "DATA Berhasil Disimpan");
-//            kosong();
-//            updateDataTabel();
-//        }catch(SQLException e){
-//            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan "+e);
-//        }
-    }
+        int bar = tabelKriteria.getSelectedRow();
+        String a = tabmode.getValueAt(bar, 0).toString();
+        String b = tabmode.getValueAt(bar, 1).toString();
+        String c = tabmode.getValueAt(bar, 2).toString();
+
+        
+        noId = a;
+        adddialog.setDataTabel(a, b, c);
+    }    
     
     protected void hapusDataKriteria(){
-        int ok = JOptionPane.showConfirmDialog(null,"hapus","Konfirmasi Dialog",JOptionPane.YES_NO_CANCEL_OPTION);
-        if(ok == 0){
-            String sql = "DELETE FROM kriteria";
-            try{
-                PreparedStatement stat = conn.prepareStatement(sql);
-
-                stat.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Data Berhasil DiHapus ");
-                kosong();
-                updateDataTabel();
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(null,"Data Gagal DiHapus " + e);
+        if(noId != null){
+            int ok = JOptionPane.showConfirmDialog(null,"hapus","Konfirmasi Dialog",JOptionPane.YES_NO_OPTION);
+            if(ok == 0){
+                String sql = "DELETE FROM kriteria WHERE kd_kriteria='"+noId+"'";
+                try{
+                    PreparedStatement stat = conn.prepareStatement(sql);
+                    stat.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Data Berhasil diHapus ");
+                    updateDataTabel();
+                    noId=null;
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Data Gagal diHapus " + e);
+                }
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Pilih data yang ingin dihapus! ");
         }
     }
     
-    protected void editDataKriteria(){
-//        try{
-//            int n=1;
-//            do{
-//                String kepentingan, kodeKriteria;
-//                String sql = "UPDATE kriteria set nama_kriteria=?, prioritas_kepentingan=? WHERE kd_kriteria=?";
-//                PreparedStatement stat = conn.prepareStatement(sql);
-//                
-//                if(n == 1){
-//                    stat.setString(1, cbKriteria1.getSelectedItem().toString());
-//                    kepentingan="Sangat Penting ke-1";
-//                }else if(n == 2){
-//                    stat.setString(1, cbKriteria2.getSelectedItem().toString());
-//                    kepentingan="Penting ke-2";
-//                }else if(n == 3){
-//                    stat.setString(1, cbKriteria3.getSelectedItem().toString());
-//                    kepentingan="Cukup Penting ke-3";
-//                }else{
-//                    stat.setString(1, cbKriteria4.getSelectedItem().toString());
-//                    kepentingan="Biasa ke-4";
-//                }
-//                stat.setString(2, kepentingan);
-//                kodeKriteria = "K"+n;
-//                stat.setString(3, kodeKriteria);
-//                stat.executeUpdate();
-//                n++;
-//            }while(n<=4);
-//            JOptionPane.showMessageDialog(null, "DATA Berhasil DiUbah");
-//            kosong();
-//            updateDataTabel();
-//        }catch(SQLException e){
-//            JOptionPane.showMessageDialog(null, "Data Gagal DiUbah "+e);
-//        }
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,7 +95,7 @@ public class PengaturanKriteria extends javax.swing.JPanel {
 
         judul = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        tombolSimpan = new javax.swing.JButton();
+        tombolAdd = new javax.swing.JButton();
         tombolEdit = new javax.swing.JButton();
         tombolHapus = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -190,22 +105,21 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         judul.setBackground(new java.awt.Color(86, 169, 222));
-        judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        judul.setForeground(new java.awt.Color(255, 255, 255));
-        judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setText("                                                                  Pengaturan Bobot Kepentingan Kriteria");
+        judul.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judul.setText("Pengaturan Bobot Kepentingan Kriteria");
         judul.setOpaque(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tombolSimpan.setBackground(new java.awt.Color(86, 169, 222));
-        tombolSimpan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adddd.png"))); // NOI18N
-        tombolSimpan.setText("TAMBAH");
-        tombolSimpan.setBorder(null);
-        tombolSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolSimpanActionPerformed(evt);
+        tombolAdd.setBackground(new java.awt.Color(86, 169, 222));
+        tombolAdd.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        tombolAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adddd.png"))); // NOI18N
+        tombolAdd.setText("TAMBAH");
+        tombolAdd.setBorder(null);
+        tombolAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tombolAddMouseClicked(evt);
             }
         });
 
@@ -214,9 +128,9 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Ubahhhhh.png"))); // NOI18N
         tombolEdit.setText("UBAH");
         tombolEdit.setBorder(null);
-        tombolEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolEditActionPerformed(evt);
+        tombolEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tombolEditMouseClicked(evt);
             }
         });
 
@@ -234,6 +148,9 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         tabelKriteria.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tabelKriteria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -265,7 +182,7 @@ public class PengaturanKriteria extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(tombolSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tombolAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -281,12 +198,12 @@ public class PengaturanKriteria extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(315, 315, 315)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(447, 447, 447)
                 .addComponent(jLabel1)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -307,21 +224,6 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tombolSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolSimpanActionPerformed
-        // TODO add your handling code here:
-//        if(cbKriteria1.getSelectedIndex() != 0 && cbKriteria2.getSelectedIndex() != 0 
-//                && cbKriteria3.getSelectedIndex() != 0 && cbKriteria4.getSelectedIndex() != 0){    
-//            insertDataKriteria();
-//        }else{
-//            JOptionPane.showMessageDialog(null, "Mohon isi semua kriteria yang ada!", "Error", ERROR_MESSAGE );
-//        }
-    }//GEN-LAST:event_tombolSimpanActionPerformed
-
-    private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
-        // TODO add your handling code here:
-        editDataKriteria();
-    }//GEN-LAST:event_tombolEditActionPerformed
-
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
         // TODO add your handling code here:
         hapusDataKriteria();
@@ -332,6 +234,25 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         getDataTabel();
     }//GEN-LAST:event_tabelKriteriaMouseClicked
 
+    private void tombolEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolEditMouseClicked
+        // TODO add your handling code here:
+        if(noId != null){
+            updatedialog.show();
+            updateDataTabel();
+            noId=null;
+        }else{
+            JOptionPane.showMessageDialog(null, "Pilih data yang ingin diubah!");
+        }
+    }//GEN-LAST:event_tombolEditMouseClicked
+
+    private void tombolAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolAddMouseClicked
+        // TODO add your handling code here:
+        adddialog.kosong();
+        adddialog.show();
+        updateDataTabel();  
+        noId=null;
+    }//GEN-LAST:event_tombolAddMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -339,8 +260,8 @@ public class PengaturanKriteria extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;
     private javax.swing.JTable tabelKriteria;
+    private javax.swing.JButton tombolAdd;
     private javax.swing.JButton tombolEdit;
     private javax.swing.JButton tombolHapus;
-    private javax.swing.JButton tombolSimpan;
     // End of variables declaration//GEN-END:variables
 }

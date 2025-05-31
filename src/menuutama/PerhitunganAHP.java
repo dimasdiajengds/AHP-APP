@@ -23,35 +23,35 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     private JTextField[][] fields;
  
     private void mapTextFields() {
-    fields[0][0] = B1K1;
-    fields[0][1] = B1K2;
-    fields[0][2] = B1K3;
-    fields[0][3] = B1K4;
-    fields[0][4] = B1K5;
-
-    fields[1][0] = B2K1;
-    fields[1][1] = B2K2;
-    fields[1][2] = B2K3;
-    fields[1][3] = B2K4;
-    fields[1][4] = B2K5;
-
-    fields[2][0] = B3K1;
-    fields[2][1] = B3K2;
-    fields[2][2] = B3K3;
-    fields[2][3] = B3K4;
-    fields[2][4] = B3K5;
-
-    fields[3][0] = B4K1;
-    fields[3][1] = B4K2;
-    fields[3][2] = B4K3;
-    fields[3][3] = B4K4;
-    fields[3][4] = B4K5;
-
-    fields[4][0] = B5K1;
-    fields[4][1] = B5K2;
-    fields[4][2] = B5K3;
-    fields[4][3] = B5K4;
-    fields[4][4] = B5K5;
+//    fields[0][0] = B1K1;
+//    fields[0][1] = B1K2;
+//    fields[0][2] = B1K3;
+//    fields[0][3] = B1K4;
+//    fields[0][4] = B1K5;
+//
+//    fields[1][0] = B2K1;
+//    fields[1][1] = B2K2;
+//    fields[1][2] = B2K3;
+//    fields[1][3] = B2K4;
+//    fields[1][4] = B2K5;
+//
+//    fields[2][0] = B3K1;
+//    fields[2][1] = B3K2;
+//    fields[2][2] = B3K3;
+//    fields[2][3] = B3K4;
+//    fields[2][4] = B3K5;
+//
+//    fields[3][0] = B4K1;
+//    fields[3][1] = B4K2;
+//    fields[3][2] = B4K3;
+//    fields[3][3] = B4K4;
+//    fields[3][4] = B4K5;
+//
+//    fields[4][0] = B5K1;
+//    fields[4][1] = B5K2;
+//    fields[4][2] = B5K3;
+//    fields[4][3] = B5K4;
+//    fields[4][4] = B5K5;
 }
     
     //Isi matriks berdasarkan parameter

@@ -16,7 +16,8 @@ import koneksi.Koneksi;
 public class alternatif extends javax.swing.JPanel {
     //koneksi mysql 
     private Connection conn = new Koneksi().connect();
-    private DialogTambahData dialog = new DialogTambahData(null, true);
+    private addDialogAlternatif adddialog = new addDialogAlternatif(null, true);
+    private updateDialogAlternatif updatedialog = new updateDialogAlternatif(null, true);
     public DefaultTableModel tabmode;
     private String noId;
     
@@ -28,42 +29,25 @@ public class alternatif extends javax.swing.JPanel {
         updateDataTabel();
     }
     
-    /**
-     * mendapatkan Data Tabel dari database
-     */
     protected void updateDataTabel(){
         Object[] Baris = {
-            "Id Paket",
-            "Nama Paket",
-            "Jenis Menu",
-            "Tingkat Vegetarian",
-            "Jumlah Orang",
-            "Menu Paket",
-            "Harga Paket",
-            "Jumlah Menu",
-            "Tingkat Popularitas"
+            "Id layanan",
+            "Nama layanan",
         };
         
         tabmode = new DefaultTableModel(null, Baris);
         tabelDataPaket.setModel(tabmode);
 
-        String sql = "SELECT * FROM data_paket ORDER BY id_paket";
+        String sql = "SELECT * FROM alternatif ORDER BY id_layanan";
         
         try{
             java.sql.Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while(hasil.next()){
-                String a = hasil.getString("id_paket");
-                String b = hasil.getString("nama_paket");
-                String c = hasil.getString("jenis_menu");
-                String d = hasil.getString("tingkat_vegetarian");
-                String e = hasil.getString("jumlah_orang");
-                String f = hasil.getString("menu_paket");
-                String g = hasil.getString("harga_paket");
-                String h = hasil.getString("jumlah_menu");
-                String i = hasil.getString("tingkat_popularitas");
+                String a = hasil.getString("id_layanan");
+                String b = hasil.getString("nama_layanan");
                 
-                String[] data={a, b, c, d, e, f, g, h, i};
+                String[] data={a, b};
                 tabmode.addRow(data);
             }
         }catch(SQLException e){
@@ -71,30 +55,20 @@ public class alternatif extends javax.swing.JPanel {
         }
     }
     
-    /**
-     * Mendapatkan Data dari Tabel
-     */
     private void getDataTabel(){
         int bar = tabelDataPaket.getSelectedRow();
         String a = tabmode.getValueAt(bar, 0).toString();
         String b = tabmode.getValueAt(bar, 1).toString();
-        String c = tabmode.getValueAt(bar, 2).toString();
-        String d = tabmode.getValueAt(bar, 3).toString();
-        String e = tabmode.getValueAt(bar, 4).toString();
-        String f = tabmode.getValueAt(bar, 5).toString();
-        String g = tabmode.getValueAt(bar, 6).toString();
-        String h = tabmode.getValueAt(bar, 7).toString();
-        String i = tabmode.getValueAt(bar, 8).toString();
         
         noId = a;
-        dialog.setDataTabel(a, b);
+        adddialog.setDataTabel(a, b);
     }
     
     protected void hapusDataPaket(){
         if(noId != null){
             int ok = JOptionPane.showConfirmDialog(null,"hapus","Konfirmasi Dialog",JOptionPane.YES_NO_OPTION);
             if(ok == 0){
-                String sql = "DELETE FROM data_paket WHERE id_paket='"+noId+"'";
+                String sql = "DELETE FROM alternatif WHERE id_layanan='"+noId+"'";
                 try{
                     PreparedStatement stat = conn.prepareStatement(sql);
                     stat.executeUpdate();
@@ -131,10 +105,9 @@ public class alternatif extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         judul.setBackground(new java.awt.Color(86, 169, 222));
-        judul.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        judul.setForeground(new java.awt.Color(255, 255, 255));
-        judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setText("                                                                       Data Layanan");
+        judul.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judul.setText("Data Layanan");
         judul.setOpaque(true);
 
         Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -166,7 +139,6 @@ public class alternatif extends javax.swing.JPanel {
 
         tombolTambah.setBackground(new java.awt.Color(86, 169, 222));
         tombolTambah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolTambah.setForeground(new java.awt.Color(86, 169, 222));
         tombolTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adddd.png"))); // NOI18N
         tombolTambah.setText("TAMBAH");
         tombolTambah.setBorder(null);
@@ -178,7 +150,6 @@ public class alternatif extends javax.swing.JPanel {
 
         tombolEdit.setBackground(new java.awt.Color(86, 169, 222));
         tombolEdit.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolEdit.setForeground(new java.awt.Color(86, 169, 222));
         tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Ubahhhhh.png"))); // NOI18N
         tombolEdit.setText("UBAH");
         tombolEdit.setBorder(null);
@@ -190,7 +161,6 @@ public class alternatif extends javax.swing.JPanel {
 
         tombolHapus.setBackground(new java.awt.Color(86, 169, 222));
         tombolHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolHapus.setForeground(new java.awt.Color(86, 169, 222));
         tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hapusss.png"))); // NOI18N
         tombolHapus.setText("HAPUS");
         tombolHapus.setBorder(null);
@@ -209,20 +179,19 @@ public class alternatif extends javax.swing.JPanel {
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(catatan)
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                        .addGroup(PanelLayout.createSequentialGroup()
-                            .addComponent(catatan, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 384, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         PanelLayout.setVerticalGroup(
@@ -233,14 +202,14 @@ public class alternatif extends javax.swing.JPanel {
                     .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addGap(136, 136, 136)
+                .addComponent(catatan)
+                .addContainerGap(230, Short.MAX_VALUE))
             .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelLayout.createSequentialGroup()
                     .addGap(61, 61, 61)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(catatan)
-                    .addGap(0, 147, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(259, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -268,7 +237,7 @@ public class alternatif extends javax.swing.JPanel {
     private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
         // TODO add your handling code here:
         if(noId != null){
-            dialog.show();
+            updatedialog.show();
             updateDataTabel();
             noId=null;
         }else{
@@ -278,8 +247,8 @@ public class alternatif extends javax.swing.JPanel {
 
     private void tombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahActionPerformed
         // TODO add your handling code here:
-            dialog.kosong();
-            dialog.show();
+            adddialog.kosong();
+            adddialog.show();
             updateDataTabel();  
             noId=null;
     }//GEN-LAST:event_tombolTambahActionPerformed
