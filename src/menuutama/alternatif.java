@@ -127,36 +127,34 @@ public class alternatif extends javax.swing.JPanel {
         tombolEdit = new javax.swing.JButton();
         tombolHapus = new javax.swing.JButton();
         catatan = new javax.swing.JLabel();
-        catatan2 = new javax.swing.JLabel();
-        catatan1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 237, 192));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        judul.setBackground(new java.awt.Color(22, 65, 53));
+        judul.setBackground(new java.awt.Color(86, 169, 222));
         judul.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        judul.setForeground(new java.awt.Color(255, 237, 192));
+        judul.setForeground(new java.awt.Color(255, 255, 255));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setText("  Data Paket Makanan dan Minuman");
+        judul.setText("                                                                       Data Layanan");
         judul.setOpaque(true);
 
-        Panel.setBackground(new java.awt.Color(255, 237, 192));
+        Panel.setBackground(new java.awt.Color(255, 255, 255));
 
         tabelDataPaket.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tabelDataPaket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID Paket", "Nama Paket", "Jenis Menu", "Tingkat Prioritas", "Jumlah Orang", "Menu Paket", "Harga Paket", "Jumlah Menu", "Tingkat Vegetarian"
+                "ID Layanan", "Nama Layanan"
             }
         ));
         tabelDataPaket.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,10 +164,10 @@ public class alternatif extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelDataPaket);
 
-        tombolTambah.setBackground(new java.awt.Color(22, 65, 53));
+        tombolTambah.setBackground(new java.awt.Color(86, 169, 222));
         tombolTambah.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolTambah.setForeground(new java.awt.Color(255, 237, 192));
-        tombolTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Tambah Small.png"))); // NOI18N
+        tombolTambah.setForeground(new java.awt.Color(86, 169, 222));
+        tombolTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adddd.png"))); // NOI18N
         tombolTambah.setText("TAMBAH");
         tombolTambah.setBorder(null);
         tombolTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -178,10 +176,10 @@ public class alternatif extends javax.swing.JPanel {
             }
         });
 
-        tombolEdit.setBackground(new java.awt.Color(22, 65, 53));
+        tombolEdit.setBackground(new java.awt.Color(86, 169, 222));
         tombolEdit.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolEdit.setForeground(new java.awt.Color(255, 237, 192));
-        tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Ubah Small.png"))); // NOI18N
+        tombolEdit.setForeground(new java.awt.Color(86, 169, 222));
+        tombolEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Ubahhhhh.png"))); // NOI18N
         tombolEdit.setText("UBAH");
         tombolEdit.setBorder(null);
         tombolEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -190,10 +188,10 @@ public class alternatif extends javax.swing.JPanel {
             }
         });
 
-        tombolHapus.setBackground(new java.awt.Color(22, 65, 53));
+        tombolHapus.setBackground(new java.awt.Color(86, 169, 222));
         tombolHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolHapus.setForeground(new java.awt.Color(255, 237, 192));
-        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Hapus Small.png"))); // NOI18N
+        tombolHapus.setForeground(new java.awt.Color(86, 169, 222));
+        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hapusss.png"))); // NOI18N
         tombolHapus.setText("HAPUS");
         tombolHapus.setBorder(null);
         tombolHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +201,7 @@ public class alternatif extends javax.swing.JPanel {
         });
 
         catatan.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        catatan.setText("Catatan : Edit/Hapus data paket makanan, klik data pada tabel terlebih dahulu");
+        catatan.setText("Catatan : Edit/Hapus data layanan, klik data pada tabel terlebih dahulu");
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
@@ -245,24 +243,12 @@ public class alternatif extends javax.swing.JPanel {
                     .addGap(0, 147, Short.MAX_VALUE)))
         );
 
-        catatan2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        catatan2.setText("Jika harga paket 6 - 9 Juta cukup input 2 angka awal harga paket");
-
-        catatan1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        catatan1.setText("Jika harga paket diatas 10 Juta (puluhan) cukup input 3 angka awal harga paket");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
+            .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
             .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(catatan2)
-                    .addComponent(catatan1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,11 +256,7 @@ public class alternatif extends javax.swing.JPanel {
                 .addComponent(judul, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(catatan2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(catatan1)
-                .addGap(195, 195, 195))
+                .addGap(241, 241, 241))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -311,8 +293,6 @@ public class alternatif extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel;
     private javax.swing.JLabel catatan;
-    private javax.swing.JLabel catatan1;
-    private javax.swing.JLabel catatan2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;
     private javax.swing.JTable tabelDataPaket;

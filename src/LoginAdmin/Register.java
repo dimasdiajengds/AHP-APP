@@ -80,7 +80,7 @@ public class Register extends javax.swing.JFrame {
 
         bRegis.setBackground(new java.awt.Color(86, 169, 222));
         bRegis.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        bRegis.setForeground(new java.awt.Color(86, 169, 222));
+        bRegis.setForeground(new java.awt.Color(255, 255, 255));
         bRegis.setText("REGISTER");
         bRegis.setBorder(null);
         bRegis.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +103,7 @@ public class Register extends javax.swing.JFrame {
         jLabel2.setText("Password");
 
         bBack.setBackground(new java.awt.Color(86, 169, 222));
-        bBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Batal Small.png"))); // NOI18N
+        bBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/back.png"))); // NOI18N
         bBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bBackActionPerformed(evt);

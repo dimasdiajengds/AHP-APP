@@ -193,16 +193,15 @@ public class PengaturanKriteria extends javax.swing.JPanel {
         judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         judul.setForeground(new java.awt.Color(255, 255, 255));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kriteriaaaa.png"))); // NOI18N
-        judul.setText("  Pengaturan Bobot Kepentingan Kriteria");
+        judul.setText("                                                                  Pengaturan Bobot Kepentingan Kriteria");
         judul.setOpaque(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         tombolSimpan.setBackground(new java.awt.Color(86, 169, 222));
         tombolSimpan.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Simpannnnnnn.png"))); // NOI18N
-        tombolSimpan.setText("SIMPAN");
+        tombolSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/adddd.png"))); // NOI18N
+        tombolSimpan.setText("TAMBAH");
         tombolSimpan.setBorder(null);
         tombolSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

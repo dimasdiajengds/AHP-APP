@@ -207,11 +207,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 laporanDataPaketMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                laporanDataPaketMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 laporanDataPaketMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                laporanDataPaketMouseExited(evt);
             }
         });
 

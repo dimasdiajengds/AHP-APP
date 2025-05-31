@@ -48,10 +48,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/kriteriaaaa.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="  Pengaturan Bobot Kepentingan Kriteria"/>
+        <Property name="text" type="java.lang.String" value="                                                                  Pengaturan Bobot Kepentingan Kriteria"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -112,9 +109,9 @@
               <Font name="SansSerif" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/image/Simpannnnnnn.png"/>
+              <Image iconType="3" name="/image/adddd.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="SIMPAN"/>
+            <Property name="text" type="java.lang.String" value="TAMBAH"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

@@ -66,20 +66,18 @@ public class Seleksi extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelRanking = new javax.swing.JTable();
-        tombolUpdate = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        tombolHapus = new javax.swing.JButton();
         tombolLihatPerhitunganAHP = new javax.swing.JButton();
 
         judul.setBackground(new java.awt.Color(86, 169, 222));
         judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        judul.setForeground(new java.awt.Color(255, 255, 255));
         judul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        judul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/seleksiiii.png"))); // NOI18N
-        judul.setText("  Ranking Hasil Seleksi Paket Makanan");
+        judul.setText("                                                             Hasil Seleksi Layanan");
         judul.setOpaque(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -109,17 +107,6 @@ public class Seleksi extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelRanking);
 
-        tombolUpdate.setBackground(new java.awt.Color(86, 169, 222));
-        tombolUpdate.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolUpdate.setText("Update");
-        tombolUpdate.setBorder(null);
-        tombolUpdate.setPreferredSize(new java.awt.Dimension(71, 35));
-        tombolUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolUpdateActionPerformed(evt);
-            }
-        });
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("- Klik tombol Update untuk mengupdate data tabel");
@@ -148,29 +135,19 @@ public class Seleksi extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addComponent(jLabel5))
         );
-
-        tombolHapus.setBackground(new java.awt.Color(86, 169, 222));
-        tombolHapus.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        tombolHapus.setText("Hapus");
-        tombolHapus.setBorder(null);
-        tombolHapus.setPreferredSize(new java.awt.Dimension(35, 35));
-        tombolHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolHapusActionPerformed(evt);
-            }
-        });
 
         tombolLihatPerhitunganAHP.setBackground(new java.awt.Color(86, 169, 222));
         tombolLihatPerhitunganAHP.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        tombolLihatPerhitunganAHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hitung.png"))); // NOI18N
         tombolLihatPerhitunganAHP.setText("Hitung");
         tombolLihatPerhitunganAHP.setBorder(null);
         tombolLihatPerhitunganAHP.setPreferredSize(new java.awt.Dimension(37, 35));
@@ -185,34 +162,26 @@ public class Seleksi extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(30, 30, 30)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(tombolLihatPerhitunganAHP, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tombolUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(20, 20, 20))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(tombolLihatPerhitunganAHP, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tombolUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tombolLihatPerhitunganAHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tombolLihatPerhitunganAHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -239,28 +208,6 @@ public class Seleksi extends javax.swing.JPanel {
         dialog1.show();
     }//GEN-LAST:event_tombolLihatPerhitunganAHPActionPerformed
 
-    private void tombolUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUpdateActionPerformed
-        // TODO add your handling code here:
-        dataTabel();
-    }//GEN-LAST:event_tombolUpdateActionPerformed
-
-    private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
-        // TODO add your handling code here:
-        int ok = JOptionPane.showConfirmDialog(null,"hapus","Konfirmasi Dialog",JOptionPane.YES_NO_CANCEL_OPTION);
-        if(ok == 0){
-            String sql = "DELETE FROM seleksi WHERE id_paket='"+noId+"'";
-            try{
-                PreparedStatement stat = conn.prepareStatement(sql);
-
-                stat.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Data berhasil dihapus ");
-                dataTabel();
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(null,"Data gagal dihapus " + e);
-            }
-        }
-    }//GEN-LAST:event_tombolHapusActionPerformed
-
     private void tabelRankingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelRankingMouseClicked
         // TODO add your handling code here:
         int bar = tabelRanking.getSelectedRow();
@@ -279,8 +226,6 @@ public class Seleksi extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel judul;
     private javax.swing.JTable tabelRanking;
-    private javax.swing.JButton tombolHapus;
     private javax.swing.JButton tombolLihatPerhitunganAHP;
-    private javax.swing.JButton tombolUpdate;
     // End of variables declaration//GEN-END:variables
 }

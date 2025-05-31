@@ -112,7 +112,7 @@ public final class Login extends javax.swing.JFrame {
 
         bLog.setBackground(new java.awt.Color(86, 169, 222));
         bLog.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        bLog.setForeground(new java.awt.Color(86, 169, 222));
+        bLog.setForeground(new java.awt.Color(255, 255, 255));
         bLog.setText("LOGIN");
         bLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +139,7 @@ public final class Login extends javax.swing.JFrame {
 
         bregis.setBackground(new java.awt.Color(86, 169, 222));
         bregis.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        bregis.setForeground(new java.awt.Color(86, 169, 222));
+        bregis.setForeground(new java.awt.Color(255, 255, 255));
         bregis.setText("REGISTER");
         bregis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

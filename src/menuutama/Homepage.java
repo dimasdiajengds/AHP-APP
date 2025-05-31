@@ -51,6 +51,9 @@ public class Homepage extends javax.swing.JFrame {
         seleksi = new javax.swing.JButton();
         laporan = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        laporanDataPaket = new javax.swing.JLabel();
+        laporanPrioritasKriteria = new javax.swing.JLabel();
+        laporanHasilSeleksi = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -127,6 +130,60 @@ public class Homepage extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jButton5.setText("LOG OUT");
 
+        laporanDataPaket.setBackground(new java.awt.Color(255, 237, 192));
+        laporanDataPaket.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        laporanDataPaket.setForeground(new java.awt.Color(86, 169, 222));
+        laporanDataPaket.setText("    Laporan Paket Makanan");
+        laporanDataPaket.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        laporanDataPaket.setOpaque(true);
+        laporanDataPaket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                laporanDataPaketMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                laporanDataPaketMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                laporanDataPaketMouseEntered(evt);
+            }
+        });
+
+        laporanPrioritasKriteria.setBackground(new java.awt.Color(255, 237, 192));
+        laporanPrioritasKriteria.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        laporanPrioritasKriteria.setForeground(new java.awt.Color(86, 169, 222));
+        laporanPrioritasKriteria.setText("   Laporan Prioritas Kriteria");
+        laporanPrioritasKriteria.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        laporanPrioritasKriteria.setOpaque(true);
+        laporanPrioritasKriteria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                laporanPrioritasKriteriaMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                laporanPrioritasKriteriaMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                laporanPrioritasKriteriaMouseEntered(evt);
+            }
+        });
+
+        laporanHasilSeleksi.setBackground(new java.awt.Color(255, 237, 192));
+        laporanHasilSeleksi.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        laporanHasilSeleksi.setForeground(new java.awt.Color(86, 169, 222));
+        laporanHasilSeleksi.setText("      Laporan Hasil Seleksi");
+        laporanHasilSeleksi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        laporanHasilSeleksi.setOpaque(true);
+        laporanHasilSeleksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                laporanHasilSeleksiMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                laporanHasilSeleksiMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                laporanHasilSeleksiMouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -138,7 +195,10 @@ public class Homepage extends javax.swing.JFrame {
                     .addComponent(kriteria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(seleksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(laporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(laporanDataPaket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(laporanPrioritasKriteria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(laporanHasilSeleksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -152,9 +212,15 @@ public class Homepage extends javax.swing.JFrame {
                 .addComponent(seleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(laporanDataPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(laporanPrioritasKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(laporanHasilSeleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(68, 68, 68))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -269,6 +335,87 @@ public class Homepage extends javax.swing.JFrame {
         cl.show(ContentPanel, "laporan");
     }//GEN-LAST:event_laporanMouseClicked
 
+    private void laporanDataPaketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanDataPaketMouseClicked
+        // TODO add your handling code here:
+        try{
+            String namaFile = "src/laporan/LaporanPaketMakanan.jasper";
+            HashMap parameter = new HashMap();
+            parameter.put("PATH_IMG","src/image/");
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_laporanDataPaketMouseClicked
+
+    private void laporanDataPaketMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanDataPaketMouseEntered
+        // TODO add your handling code here:
+        laporanDataPaket.setBackground(new Color(51,51,51));
+        laporanDataPaket.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_laporanDataPaketMouseEntered
+
+    private void laporanDataPaketMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanDataPaketMouseExited
+        // TODO add your handling code here:
+        laporanDataPaket.setBackground(new Color(80,80,80));
+    }//GEN-LAST:event_laporanDataPaketMouseExited
+
+    private void laporanPrioritasKriteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanPrioritasKriteriaMouseClicked
+        // TODO add your handling code here:
+        try{
+            String namaFile = "src/laporan/LaporanPrioritasKriteria.jasper";
+            HashMap parameter = new HashMap();
+            parameter.put("PATH_IMG","src/image/");
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_laporanPrioritasKriteriaMouseClicked
+
+    private void laporanPrioritasKriteriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanPrioritasKriteriaMouseExited
+        // TODO add your handling code here:
+        laporanPrioritasKriteria.setBackground(new Color(80,80,80));
+    }//GEN-LAST:event_laporanPrioritasKriteriaMouseExited
+
+    private void laporanPrioritasKriteriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanPrioritasKriteriaMouseEntered
+        // TODO add your handling code here:
+        laporanPrioritasKriteria.setBackground(new Color(51,51,51));
+        laporanPrioritasKriteria.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_laporanPrioritasKriteriaMouseEntered
+
+    private void laporanHasilSeleksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanHasilSeleksiMouseClicked
+        // TODO add your handling code here:
+        try{
+            String namaFile = "src/laporan/LaporanHasilSeleksi.jasper";
+            HashMap parameter = new HashMap();
+            parameter.put("PATH_IMG","src/image/");
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_laporanHasilSeleksiMouseClicked
+
+    private void laporanHasilSeleksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanHasilSeleksiMouseExited
+        // TODO add your handling code here:
+        laporanHasilSeleksi.setBackground(new Color(80,80,80));
+    }//GEN-LAST:event_laporanHasilSeleksiMouseExited
+
+    private void laporanHasilSeleksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanHasilSeleksiMouseEntered
+        // TODO add your handling code here:
+        laporanHasilSeleksi.setBackground(new Color(51,51,51));
+        laporanHasilSeleksi.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_laporanHasilSeleksiMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +466,9 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JButton kriteria;
     private javax.swing.JButton laporan;
+    private javax.swing.JLabel laporanDataPaket;
+    private javax.swing.JLabel laporanHasilSeleksi;
+    private javax.swing.JLabel laporanPrioritasKriteria;
     private javax.swing.JButton seleksi;
     // End of variables declaration//GEN-END:variables
 }
