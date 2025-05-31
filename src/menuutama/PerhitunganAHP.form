@@ -364,9 +364,6 @@
             <Component class="javax.swing.JTextField" name="B3K2">
             </Component>
             <Component class="javax.swing.JTextField" name="B3K3">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B3K3ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="B3K4">
               <Events>
@@ -374,23 +371,14 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="B3K5">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B3K5ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="J3">
             </Component>
             <Component class="javax.swing.JTextField" name="B4K1">
             </Component>
             <Component class="javax.swing.JTextField" name="B4K2">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B4K2ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="B4K3">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B4K3ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="B4K4">
             </Component>
@@ -401,16 +389,10 @@
             <Component class="javax.swing.JTextField" name="B5K1">
             </Component>
             <Component class="javax.swing.JTextField" name="B5K2">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B5K2ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="B5K3">
             </Component>
             <Component class="javax.swing.JTextField" name="B5K4">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B5K4ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="B5K5">
             </Component>

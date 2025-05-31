@@ -21,37 +21,43 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     private boolean sedangUpdate = false;
     MatriksAhp matriks = new MatriksAhp();
     private JTextField[][] fields;
+    private JTextField[] sumfields;
  
     private void mapTextFields() {
     fields[0][0] = B1K1;
     fields[0][1] = B1K2;
-    fields[0][2] = B1K2N;
+    fields[0][2] = B1K3;
     fields[0][3] = B1K4;
     fields[0][4] = B1K5;
+    sumfields[0] = J1;
 
     fields[1][0] = B2K1;
-    fields[1][1] = B2K1N;
-    fields[1][2] = B1K3;
+    fields[1][1] = B2K2;
+    fields[1][2] = B2K3;
     fields[1][3] = B2K4;
     fields[1][4] = B2K5;
+    sumfields[1] = J2;
 
     fields[2][0] = B3K1;
     fields[2][1] = B3K2;
-    fields[2][2] = B2K3;
+    fields[2][2] = B3K3;
     fields[2][3] = B3K4;
-    fields[2][4] = B2K5;
+    fields[2][4] = B3K5;
+    sumfields[2] = J3;
 
     fields[3][0] = B4K1;
     fields[3][1] = B4K2;
     fields[3][2] = B4K3;
     fields[3][3] = B4K4;
     fields[3][4] = B4K5;
+    sumfields[3] = J4;
 
     fields[4][0] = B5K1;
     fields[4][1] = B5K2;
     fields[4][2] = B5K3;
     fields[4][3] = B5K4;
     fields[4][4] = B5K5;
+    sumfields[4] = J5;
 }
     
     //Isi matriks berdasarkan parameter
@@ -70,6 +76,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
         initComponents();
         fields = new JTextField[5][5];
         mapTextFields();
+        sumfields = new JTextField[][];
         setupListeners();
     }
 
@@ -213,45 +220,9 @@ public class PerhitunganAHP extends javax.swing.JDialog {
             }
         });
 
-        B3K3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B3K3ActionPerformed(evt);
-            }
-        });
-
         B3K4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B3K4ActionPerformed(evt);
-            }
-        });
-
-        B3K5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B3K5ActionPerformed(evt);
-            }
-        });
-
-        B4K2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B4K2ActionPerformed(evt);
-            }
-        });
-
-        B4K3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B4K3ActionPerformed(evt);
-            }
-        });
-
-        B5K2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B5K2ActionPerformed(evt);
-            }
-        });
-
-        B5K4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B5K4ActionPerformed(evt);
             }
         });
 
@@ -900,33 +871,9 @@ public class PerhitunganAHP extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void B3K3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3K3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B3K3ActionPerformed
-
-    private void B3K5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3K5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B3K5ActionPerformed
-
-    private void B4K2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4K2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B4K2ActionPerformed
-
-    private void B4K3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4K3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B4K3ActionPerformed
-
-    private void B5K2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5K2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B5K2ActionPerformed
-
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void B5K4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5K4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B5K4ActionPerformed
 
     private void B5K2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
         // TODO add your handling code here:
