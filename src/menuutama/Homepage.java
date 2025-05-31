@@ -18,6 +18,11 @@ public class Homepage extends javax.swing.JFrame {
      */
     public Homepage() {
         initComponents();
+        
+        // Set initial
+        setVisible(true);
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        
         // Inisialisasi ContentPanel dulu
         ContentPanel = new javax.swing.JPanel();
         ContentPanel.setLayout(new java.awt.CardLayout());
@@ -56,7 +61,7 @@ public class Homepage extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logoooooo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
