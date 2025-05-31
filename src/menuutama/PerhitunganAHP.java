@@ -22,6 +22,11 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     MatriksAhp matriks = new MatriksAhp();
     private JTextField[][] fields;
     private JTextField[] sumfields;
+    private JTextField[][] normalfields; // 5x5 matriks normalisasi
+    private JTextField[] sumColsfields; // Jumlah tiap kolom (5)
+    private JTextField[] normalSumFields; // jumlah dari matriks normalisasi
+    private JTextField[] prioritasfields; // Bobot prioritas tiap baris (5)
+    private javax.swing.JButton btnHitung; // inisialisasi button hitung
  
     private void mapTextFields() {
     fields[0][0] = B1K1;
@@ -60,13 +65,145 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     sumfields[4] = J5;
 }
     
+    private void mapNormalisasiFields() {
+    normalfields[0][0] = B1K1N;
+    normalfields[0][1] = B1K2N;
+    normalfields[0][2] = B1K3N;
+    normalfields[0][3] = B1K4N;
+    normalfields[0][4] = B1K5N;
+    sumColsfields[0] = NJ1;
+    prioritasfields[0] = P1;
+    
+    normalfields[1][0] = B2K1N;
+    normalfields[1][1] = B2K2N;
+    normalfields[1][2] = B2K3N;
+    normalfields[1][3] = B2K4N;
+    normalfields[1][4] = B2K5N;
+    sumColsfields[1] = NJ2;
+    prioritasfields[1] = P2;
+    
+    normalfields[2][0] = B3K1N;
+    normalfields[2][1] = B3K2N;
+    normalfields[2][2] = B3K3N;
+    normalfields[2][3] = B3K4N;
+    normalfields[2][4] = B3K5N;
+    sumColsfields[2] = NJ3;
+    prioritasfields[2] = P3;
+    
+    normalfields[3][0] = B4K1N;
+    normalfields[3][1] = B4K2N;
+    normalfields[3][2] = B4K3N;
+    normalfields[3][3] = B4K4N;
+    normalfields[3][4] = B4K5N;
+    sumColsfields[3] = NJ4;
+    prioritasfields[3] = P4;
+    
+    normalfields[4][0] = B5K1N;
+    normalfields[4][1] = B5K2N;
+    normalfields[4][2] = B5K3N;
+    normalfields[4][3] = B5K4N;
+    normalfields[4][4] = B5K5N;
+    sumColsfields[4] = NJ5;
+    prioritasfields[4] = P5;
+    
+    normalSumFields = new JTextField[5];
+    normalSumFields[0] = J1N;
+    normalSumFields[1] = J2N;
+    normalSumFields[2] = J3N;
+    normalSumFields[3] = J4N;
+    normalSumFields[4] = J5N;
+}
+    
+    
+    private void hitungJumlahBaris() {
+    DecimalFormat df = new DecimalFormat("#.###");
+    for (int i = 0; i < 5; i++) {
+        double jumlah = 0.0;
+        for (int j = 0; j < 5; j++) {
+            try {
+                double nilai = Double.parseDouble(fields[i][j].getText());
+                jumlah += nilai;
+            } catch (NumberFormatException e) {
+                // Jika field kosong atau tidak valid, anggap 0
+            }
+        }
+        sumfields[i].setText(df.format(jumlah));
+    }
+}
+ 
+   private void hitungNormalisasiDanPrioritas() {
+    double[][] matriksPerbandingan = new double[5][5];
+    double[] jumlahBaris = new double[5]; // Bukan jumlah kolom
+    DecimalFormat df = new DecimalFormat("#.###");
+
+    // Ambil nilai dari matriks perbandingan dan hitung jumlah baris
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            try {
+                matriksPerbandingan[i][j] = Double.parseDouble(fields[i][j].getText());
+            } catch (NumberFormatException e) {
+                matriksPerbandingan[i][j] = 0.0;
+            }
+            jumlahBaris[i] += matriksPerbandingan[i][j];
+        }
+    }
+
+    // Tampilkan jumlah baris ke JTextField (opsional, jika ingin)
+    for (int i = 0; i < 5; i++) {
+        sumfields[i].setText(df.format(jumlahBaris[i]));
+    }
+
+    // Hitung matriks normalisasi dan prioritas berdasarkan pembagian dengan jumlah baris
+    for (int i = 0; i < 5; i++) {
+        double jumlahNormalisasi = 0.0;
+        for (int j = 0; j < 5; j++) {
+            double nilaiNormalisasi = (jumlahBaris[i] != 0) ? matriksPerbandingan[i][j] / jumlahBaris[i] : 0.0;
+            normalfields[i][j].setText(df.format(nilaiNormalisasi));
+            jumlahNormalisasi += nilaiNormalisasi;
+        }
+
+        normalSumFields[i].setText(df.format(jumlahNormalisasi)); // Jumlah baris normalisasi
+    }
+    // Hitung jumlah kolom normalisasi dan tampilkan
+    
+    for (int j = 0; j < 5; j++) {
+        double jumlahKolom = 0.0;
+        for (int i = 0; i < 5; i++) {
+            try {
+                double nilai = Double.parseDouble(normalfields[i][j].getText());
+                jumlahKolom += nilai;
+            } catch (NumberFormatException e) {
+            // Jika error parsing, lewati saja
+            }
+        }
+        sumColsfields[j].setText(df.format(jumlahKolom));
+        double prioritas = jumlahKolom / 5.0; // Rata-rata
+        prioritasfields[j].setText(df.format(prioritas));
+    }
+}
+
+   
     //Isi matriks berdasarkan parameter
     private void setupListeners() {
-    // Hindari update bolak-balik
-        matriks.setDiagonalToOne(fields);
-        matriks.autoBindMatrix(fields);
-   }
-
+    matriks.setDiagonalToOne(fields);
+    matriks.autoBindMatrix(fields);
+    
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            final int row = i;
+            final int col = j;
+            fields[i][j].addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyReleased(java.awt.event.KeyEvent evt) {
+                    if (!sedangUpdate) {
+                        sedangUpdate = true;
+                        hitungJumlahBaris();
+                        sedangUpdate = false;
+                    }
+                }
+            });
+        }
+    }
+}
 
     /**
      * Creates new form CobaDialog
@@ -74,9 +211,14 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     public PerhitunganAHP(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         fields = new JTextField[5][5];
+        sumfields = new JTextField[5]; 
+        normalfields = new JTextField[5][5];//field yang isi normalisasi
+        sumColsfields = new JTextField[5];//isi jumlah yang di kolom
+        prioritasfields = new JTextField[5];//prioritas normalisasi (yg kata lu mau dimasukin DB)
         mapTextFields();
-        sumfields = new JTextField[][];
+        mapNormalisasiFields();
         setupListeners();
     }
 
@@ -164,18 +306,16 @@ public class PerhitunganAHP extends javax.swing.JDialog {
         B5K4N = new javax.swing.JTextField();
         B5K5N = new javax.swing.JTextField();
         J5N = new javax.swing.JTextField();
-        B6K1N = new javax.swing.JTextField();
-        B6K2N = new javax.swing.JTextField();
-        B6K3N = new javax.swing.JTextField();
-        B6K4N = new javax.swing.JTextField();
-        B6K5N = new javax.swing.JTextField();
-        J6N = new javax.swing.JTextField();
-        B7K1N = new javax.swing.JTextField();
-        B7K2N = new javax.swing.JTextField();
-        B7K3N = new javax.swing.JTextField();
-        B7K4N = new javax.swing.JTextField();
-        B7K5N = new javax.swing.JTextField();
-        J7N = new javax.swing.JTextField();
+        NJ1 = new javax.swing.JTextField();
+        NJ2 = new javax.swing.JTextField();
+        NJ3 = new javax.swing.JTextField();
+        NJ4 = new javax.swing.JTextField();
+        NJ5 = new javax.swing.JTextField();
+        P1 = new javax.swing.JTextField();
+        P2 = new javax.swing.JTextField();
+        P3 = new javax.swing.JTextField();
+        P4 = new javax.swing.JTextField();
+        P5 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -193,7 +333,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        hitung = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -584,9 +724,9 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(B5K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(B6K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NJ5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(B7K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -598,9 +738,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(J4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(J5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(J6N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(J5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(B1K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -612,7 +750,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(B5K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B6K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(B1K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -624,7 +762,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(B5K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B6K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(B1K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -636,7 +774,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(B5K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(B6K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -662,26 +800,21 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                                         .addComponent(jLabel25)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(B6K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel26))))
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(B7K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(B7K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(B7K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(B7K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel27)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(J7N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jLabel22)
@@ -697,8 +830,8 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                     .addComponent(B3K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B4K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B5K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B6K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B7K1N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -707,8 +840,8 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                     .addComponent(B3K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B4K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B5K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B6K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B7K2N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -717,8 +850,8 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                     .addComponent(B3K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B4K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B5K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B6K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B7K3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NJ3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -727,8 +860,8 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                     .addComponent(B3K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B4K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B5K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B6K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B7K4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NJ4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -737,13 +870,11 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                     .addComponent(B3K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B4K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B5K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B6K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B7K5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NJ5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(J7N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(J6N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(J5N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(J4N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(J3N, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -799,9 +930,14 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(91, 174, 228));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton1.setText("HITUNG");
+        hitung.setBackground(new java.awt.Color(91, 174, 228));
+        hitung.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        hitung.setText("HITUNG");
+        hitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hitungActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(91, 174, 228));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -820,7 +956,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                 .addGap(232, 232, 232)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -846,7 +982,7 @@ public class PerhitunganAHP extends javax.swing.JDialog {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
@@ -955,6 +1091,13 @@ public class PerhitunganAHP extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungActionPerformed
+        sedangUpdate = true;
+        hitungJumlahBaris();
+        hitungNormalisasiDanPrioritas();
+        sedangUpdate = false;
+    }//GEN-LAST:event_hitungActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1048,16 +1191,6 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     private javax.swing.JTextField B5K4N;
     private javax.swing.JTextField B5K5;
     private javax.swing.JTextField B5K5N;
-    private javax.swing.JTextField B6K1N;
-    private javax.swing.JTextField B6K2N;
-    private javax.swing.JTextField B6K3N;
-    private javax.swing.JTextField B6K4N;
-    private javax.swing.JTextField B6K5N;
-    private javax.swing.JTextField B7K1N;
-    private javax.swing.JTextField B7K2N;
-    private javax.swing.JTextField B7K3N;
-    private javax.swing.JTextField B7K4N;
-    private javax.swing.JTextField B7K5N;
     private javax.swing.JTextField J1;
     private javax.swing.JTextField J1N;
     private javax.swing.JTextField J2;
@@ -1068,9 +1201,17 @@ public class PerhitunganAHP extends javax.swing.JDialog {
     private javax.swing.JTextField J4N;
     private javax.swing.JTextField J5;
     private javax.swing.JTextField J5N;
-    private javax.swing.JTextField J6N;
-    private javax.swing.JTextField J7N;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField NJ1;
+    private javax.swing.JTextField NJ2;
+    private javax.swing.JTextField NJ3;
+    private javax.swing.JTextField NJ4;
+    private javax.swing.JTextField NJ5;
+    private javax.swing.JTextField P1;
+    private javax.swing.JTextField P2;
+    private javax.swing.JTextField P3;
+    private javax.swing.JTextField P4;
+    private javax.swing.JTextField P5;
+    private javax.swing.JButton hitung;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
