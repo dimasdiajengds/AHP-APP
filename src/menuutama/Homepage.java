@@ -30,7 +30,7 @@ public class Homepage extends javax.swing.JFrame {
         ContentPanel.add(new alternatif(),"alternatif");
         ContentPanel.add(new PengaturanKriteria(),"kriteria");
         ContentPanel.add(new Seleksi(),"seleksi");
-         jPanel4.add(ContentPanel);
+         content.add(ContentPanel);
     }
 
     /**
@@ -46,14 +46,15 @@ public class Homepage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        alternatif = new javax.swing.JButton();
+        kriteria = new javax.swing.JButton();
+        seleksi = new javax.swing.JButton();
+        laporan = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,35 +83,45 @@ public class Homepage extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(91, 174, 228));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/paket.png"))); // NOI18N
-        jButton1.setText("ALTERNATIF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        alternatif.setBackground(new java.awt.Color(91, 174, 228));
+        alternatif.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        alternatif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/paket.png"))); // NOI18N
+        alternatif.setText("ALTERNATIF");
+        alternatif.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alternatifMouseClicked(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(91, 174, 228));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/folderrrr.png"))); // NOI18N
-        jButton2.setText("KRITERIA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        kriteria.setBackground(new java.awt.Color(91, 174, 228));
+        kriteria.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        kriteria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/folderrrr.png"))); // NOI18N
+        kriteria.setText("KRITERIA");
+        kriteria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kriteriaMouseClicked(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(91, 174, 228));
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hitung.png"))); // NOI18N
-        jButton3.setText("SELEKSI");
+        seleksi.setBackground(new java.awt.Color(91, 174, 228));
+        seleksi.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        seleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hitung.png"))); // NOI18N
+        seleksi.setText("SELEKSI");
+        seleksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seleksiMouseClicked(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(91, 174, 228));
-        jButton4.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/laporannnn.png"))); // NOI18N
-        jButton4.setText("LAPORAN");
+        laporan.setBackground(new java.awt.Color(91, 174, 228));
+        laporan.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/laporannnn.png"))); // NOI18N
+        laporan.setText("LAPORAN");
+        laporan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                laporanMouseClicked(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(91, 174, 228));
         jButton5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -123,10 +134,10 @@ public class Homepage extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(alternatif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kriteria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(seleksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(laporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -134,13 +145,13 @@ public class Homepage extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alternatif, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(seleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -188,6 +199,9 @@ public class Homepage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        content.setBackground(new java.awt.Color(91, 174, 228));
+        content.setLayout(new java.awt.CardLayout());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,7 +211,9 @@ public class Homepage extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,8 +222,10 @@ public class Homepage extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,13 +245,29 @@ public class Homepage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void alternatifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alternatifMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        CardLayout cl = (CardLayout) ContentPanel.getLayout();
+        cl.show(ContentPanel, "alternatif");
+    }//GEN-LAST:event_alternatifMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void kriteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kriteriaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        CardLayout cl = (CardLayout) ContentPanel.getLayout();
+        cl.show(ContentPanel, "kriteria");
+    }//GEN-LAST:event_kriteriaMouseClicked
+
+    private void seleksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleksiMouseClicked
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) ContentPanel.getLayout();
+        cl.show(ContentPanel, "seleksi");
+    }//GEN-LAST:event_seleksiMouseClicked
+
+    private void laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporanMouseClicked
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) ContentPanel.getLayout();
+        cl.show(ContentPanel, "laporan");
+    }//GEN-LAST:event_laporanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -273,10 +307,8 @@ public class Homepage extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JPanel ContentPanel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton alternatif;
+    private javax.swing.JPanel content;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -285,5 +317,8 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton kriteria;
+    private javax.swing.JButton laporan;
+    private javax.swing.JButton seleksi;
     // End of variables declaration//GEN-END:variables
 }

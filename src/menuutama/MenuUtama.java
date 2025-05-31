@@ -46,18 +46,12 @@ public class MenuUtama extends javax.swing.JFrame {
     // untuk sliderMenu
     private void sliderMenuDefault(){
         slideMenuLaporan.setVisible(false);
-//        slideMenuPengaturan.setVisible(false);
     }
     
     private void hiddenSubMenu(){
         if(slideMenuLaporan.isVisible() == true){
             slideMenuLaporan.setVisible(false);
-//            slideMenuPengaturan.setVisible(false);
         }
-//        if(slideMenuPengaturan.isVisible() == true){
-//            slideMenuLaporan.setVisible(false);
-////            slideMenuPengaturan.setVisible(false);
-//        }
     }
     
     private void showSubMenu(JPanel subMenu){
