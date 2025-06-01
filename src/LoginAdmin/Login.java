@@ -137,6 +137,12 @@ public final class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        tUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tUserActionPerformed(evt);
+            }
+        });
+
         bregis.setBackground(new java.awt.Color(86, 169, 222));
         bregis.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         bregis.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,6 +287,10 @@ public final class Login extends javax.swing.JFrame {
              masuk();
         }
     }//GEN-LAST:event_tPassKeyPressed
+
+    private void tUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tUserActionPerformed
 
     /**
      * @param args the command line arguments
